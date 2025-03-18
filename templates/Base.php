@@ -174,9 +174,23 @@ class Base implements TemplateInterface{
         $html = "<menu class='menu'>";
         $html .=   "<li><a href='/'>Inicio</a></li>";
         
+        //Enlace a la lista de anuncios
+        $html .=   "<li><a href='/Anuncio'>Anuncios</a></li>";
+        //Enlace a contactos
+        $html .=   "<li><a href='/Contacto'>Contacto</a></li>";
+        
+        //Para registrarse
+        if(Login::guest())
+            $html .=   "<li><a href='/User/create'>Registrate</a></li>";
+        
+        //esto solo lo verá el ADMIN
+        if(Login::role('ROLE_ADMIN'))
+            $html .= "<li><a href='/Panel/admin'>Panel del administrador</a></li>";
+            
+        
         // Enlace a los ejemplos de maquetación.
         // Lo eliminaremos en producción junto con la carpeta mvc/views/examples y el ExampleController
-        $html .=   "<li><a href='/Example'>Ejemplos de maquetación</a></li>";
+        //$html .=   "<li><a href='/Example'>Ejemplos de maquetación</a></li>";
            
         // Enlace a los tests de ejemplo (solamente para usuarios con alguno de los TEST_ROLES)
         // Lo eliminaremos en producción, junto a la carpeta test y el TestController

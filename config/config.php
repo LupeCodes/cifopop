@@ -60,7 +60,7 @@ define('AUTOLOAD_DIRECTORIES',  [
  * APLICACIÓN
  * -------------------------------------------------------------*/
 
-define('APP_NAME', 'FastLight Framework');   // Título de la aplicación.
+define('APP_NAME', 'CIFOpop');   // Título de la aplicación.
 define('APP_TYPE', 'WEB');                   // Tipo de aplicación: WEB o API.
 
 define('APP_VERSION', '1.8.7');  // versión actual del framework o aplicación desarrollada
@@ -110,7 +110,7 @@ define('RESPONSE_CHARSET', 'utf-8'); // charset para las respuestas HTTP
 define('DB_HOST','localhost');  // Host.
 define('DB_USER','root');       // Usuario.
 define('DB_PASS','');           // Password.
-define('DB_NAME','fastlight');  // Nombre de la base de datos.
+define('DB_NAME','cifopop');  // Nombre de la base de datos.
 define('DB_PORT',  3306);       // Puerto.
 define('DB_CHARSET','utf8');    // Codificación de caracteres.
 
@@ -153,6 +153,12 @@ define('USER_IMAGE_FOLDER','/images/users');
 
 // imagen por defecto para los usuarios que no tengan
 define('DEFAULT_USER_IMAGE', 'default.png');
+
+// carpeta para las imagenes de los anuncios
+define('ANUNCIO_IMAGE_FOLDER','/images/anuncios');
+
+//imagen por defecto para los anuncios que no tengan
+define('DEFAULT_ANUNCIO_IMAGE', 'default.png');
 
 
 
