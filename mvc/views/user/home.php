@@ -64,6 +64,13 @@
         			</tr>
         			
         			<?php foreach($anuncios as $anuncio){?>
+        				<script>
+							function confirmar(id){
+							if(confirm('¿Seguro que deseas eliminar?'))
+								location.href = '/Anuncio/destroy/'+id
+							}
+						</script>
+						
         				<tr>
         					<td class="centrado">
         						<img src="<?=ANUNCIO_IMAGE_FOLDER.'/'.($anuncio->imagen ?? DEFAULT_ANUNCIO_IMAGE)?>"
@@ -72,7 +79,9 @@
         					<td><?=$anuncio->titulo?></td>
         					<td><?=$anuncio->precio?></td>
         					
-        						<td><a href='/Anuncio/edit/<?=$anuncio->id?>'>Editar</a></td>
+        						<td><a href='/Anuncio/edit/<?=$anuncio->id?>'>Editar</a>
+        						<a onclick="confirmar(<?= $anuncio->id ?>)">Borrar</a></td>
+        						
         					
         				</tr>
         			<?php } ?>

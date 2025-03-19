@@ -198,7 +198,7 @@ class AnuncioController extends Controller{
                 $usuario = Login::user();
                 $idlogin = $usuario->id;
                 
-                //busca el libro con ese ID
+                //busca el anuncio con ese ID
                 //$anuncio = Anuncio::findOrFail($id, "No se encontró el anuncio");
                 $iduser = $anuncio->iduser;
                 //primero comprobamos que el usuario que está intentando
@@ -249,6 +249,37 @@ class AnuncioController extends Controller{
     }//FIN DE UPDATE
     
     
+    
+    //DESTROY--------------------------------------------------------------------
+    public function destroy(int $id = 0){
+        
+        
+        //lo recuperamos de la BDD
+        $anuncio = Anuncio::findOrFail($id, "No se encontró el ejemplar");
+        
+        
+        //recuperamos el usuario que ha hecho login
+        $usuario = Login::user();
+        $idlogin = $usuario->id;
+        //si hay prestamos no permitimos el borrado
+        if($idlogin <> $anuncio->iduser)
+            throw new AuthException('Tú no puedes borrar esto, colegui');
+            
+        try{
+            $anuncio->deleteObject();
+            Session::Success('Anuncio eliminado correctamente.');
+            return redirect("/User/home");
+                
+        }catch(SQLException $e){
+                
+            Session::error('No se pudo borrar el anuncio');
+                
+            if(DEBUG)
+                throw new Exception($e->getMessage());
+                    
+            return redirect("/User/home");
+            }
+    }//FIN DE DESTROY
     
     
 }//FIN DE LA CLASE
